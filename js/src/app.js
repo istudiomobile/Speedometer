@@ -1,4 +1,16 @@
 (function(){
+
+    var locationCoords;
+    var locationPool = [];
+    var distance;
+
+    function ShowAlert(message, title) {
+        if (navigator.notification) {
+            navigator.notification.alert(message, null, title, 'OK');
+        } else {
+            alert(title ? (title + ": " + message) : message);
+        }
+    }
         
     if (navigator.geolocation) {
         navigator.geolocation.watchPosition(geoSuccess, geoFailure,
@@ -9,7 +21,7 @@
             }
         );
     } else {
-        speedo.textContent = "Geolocation is not supported by this browser :(";
+        ShowAlert("Geolocation is not supported by this browser :(");
     }
 
     function geoSuccess(position) {
@@ -19,23 +31,35 @@
         WinJS.Binding.processAll(speedo, data);
         WinJS.Binding.processAll(compass, data);
         var bindingData = WinJS.Binding.as(data);
-        calculateDistance(getCurrent("lat"), getCurrent("long"), data.latitude, data.longitude);
+        saveLocation(data.latitude, data.longitude);
+        //distance = calculateDistance();
     }
 
     function geoFailure(error) {
         console.log("error");
     }
 
-    function calculateDistance(currentLat, currentLong, lat, long){
-
-    }
-
-    function getCurrent(coord){
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(Success, Failure);
-        } else {
-            speedo.textContent = "Geolocation is not supported by this browser :("; // Change for trip placeholder
+    function calculateDistance(lastLat, lastLong, lat, long){
+        if(locationPool[1]){
+            var R = 6371; // km
+            var dLat = (lat2 - lat1).toRad();
+            var dLon = (lon2 - lon1).toRad(); 
+            var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                    Math.cos(lat1.toRad()) * Math.cos(lat2.toRad()) * 
+                    Math.sin(dLon / 2) * Math.sin(dLon / 2); 
+            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)); 
+            var d = R * c;
         }
+        
+        return d;
     }
+
+    Number.prototype.toRad = function() {
+        return this * Math.PI / 180;
+    }
+
+    function saveLocation(lat, long){
+        locationPool.unshift([lat,long]);
+    }    
 
 })();
