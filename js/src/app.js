@@ -25,7 +25,7 @@
     }
 
     function geoSuccess(position) {
-        var data = {longitude: position.coords.longitude, latitude: position.coords.latitude, speed: position.coords.speed, heading: position.coords.heading};
+        var data = {longitude: position.coords.longitude, latitude: position.coords.latitude, speed: position.coords.speed.toFixed(1), heading: position.coords.heading.toFixed(1)};
         var speedo = document.querySelector('.win-h1');
         var compass = document.querySelector('.win-h2');
         WinJS.Binding.processAll(speedo, data);
