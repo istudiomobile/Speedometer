@@ -25,8 +25,9 @@
     }
 
     function geoSuccess(position) {
-        var dataSpeed = ((position.coords.speed)*3.6).toFixed(1);
-        var dataHeading = (position.coords.heading).toFixed(1);
+        var dataSpeed = (parseFloat(position.coords.speed)*3.6).toFixed(1);
+        var dataHeading = parseFloat(position.coords.heading).toFixed(1);
+        if (isNaN(dataSpeed) || isNaN(dataHeading)) dataSpeed = 0, dataHeading = 0;
         var data = {longitude: position.coords.longitude, latitude: position.coords.latitude, speed: dataSpeed, heading: dataHeading};
         var speedo = document.querySelector('.win-h1');
         var compass = document.querySelector('.win-h2');
