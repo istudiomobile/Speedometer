@@ -1,9 +1,9 @@
-.win-h1 {
+h1.win-h1 {
     text-align: center;
     margin-top: 150px;
 }
 
-.win-h2 {
+h2.win-h2 {
     text-align: center;
     margin-top: 75px;
 }
