@@ -3,6 +3,7 @@
     var locationCoords;
     var locationPool = [];
     var distance;
+    var data;
 
     function ShowAlert(message, title) {
         if (navigator.notification) {
@@ -11,7 +12,8 @@
             alert(title ? (title + ": " + message) : message);
         }
     }
-        
+    
+    var app = new Vue();
     if (navigator.geolocation) {
         navigator.geolocation.watchPosition(geoSuccess, geoFailure,
             {
@@ -28,19 +30,19 @@
         var dataSpeed = (parseFloat(position.coords.speed)*3.6).toFixed(1);
         var dataHeading = parseFloat(position.coords.heading).toFixed(1);
         if (isNaN(dataSpeed) || isNaN(dataHeading)) dataSpeed = 0, dataHeading = 0;
-        var data = {longitude: position.coords.longitude, latitude: position.coords.latitude, speed: dataSpeed, heading: dataHeading};
+        data = {longitude: position.coords.longitude, latitude: position.coords.latitude, speed: dataSpeed, heading: dataHeading};
         /*var speedo = document.querySelector('.win-h1');
         var compass = document.querySelector('.win-h2');
         WinJS.Binding.processAll(speedo, data);
         WinJS.Binding.processAll(compass, data);
         var bindingData = WinJS.Binding.as(data);*/
-        var app = new Vue({
+        app({
             el: '#speedo',
             data: {
                 speed: data.speed
             }
         });
-        saveLocation(data.latitude, data.longitude);
+        //saveLocation(data.latitude, data.longitude);
         //distance = calculateDistance();
     }
 
