@@ -14,14 +14,13 @@
         
     </head>
     <body class="win-type-body">
-        <h1 class="win-type-title">Cheyenne Vortec 5.7L</h1>
-        <!--<h1 class="win-h1" data-win-bind="innerText: speed;"></h1>-->
+        <h1 class="win-type-title">Chevrolet Cheyenne</h1>
         <div class="row">
-            <div class="medium-7 columns">
+            <div class="right">
                 <canvas id="speedo"
                         data-type="radial-gauge"
-                        data-width="300"
-                        data-height="300"
+                        data-width="380"
+                        data-height="380"
                         data-units="Km/h"
                         data-min-value="0"
                         data-start-angle="90"
@@ -47,12 +46,11 @@
                         data-needle-circle-inner="false"
                         data-animation-duration="500"
                         data-animation-rule="linear"
-                        width="450"
-                        height="450"
-                        style="width: 450px; height: 450px;"></canvas>
-            </div><!-- .medium-3 -->
-            <div class="medium-7 columns">
-                <!--<h2 class="win-h2" data-win-bind="innerText: heading;"></h2>-->
+                        width="380"
+                        height="380"
+                        style="width: 380px; height: 380px;"></canvas>
+            </div><!-- .right -->
+            <div class="left">
                 <canvas id="compass"
                         data-type="radial-gauge"
                         data-min-value="0"
@@ -90,9 +88,9 @@
                         data-color-needle-shadow-down="#222"
                         data-border-shadow-width="0"
                         data-animation-duration="500"
-                        width="250" height="201"
-                        style="width: 250px; height: 201px;"></canvas>
-            </div><!-- .medium-3 -->
+                        width="300" height="300"
+                        style="width: 300px; height: 300px;"></canvas>
+            </div><!-- .left -->
         </div><!-- .row -->
 
     <script src="js/src/app.js"></script>

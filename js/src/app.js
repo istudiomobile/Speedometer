@@ -43,11 +43,6 @@
         var data = {longitude: position.coords.longitude, latitude: position.coords.latitude, speed: dataSpeed, heading: dataHeading};
         vm_spd.speed  = data.speed;
         vm_hd.heading = data.heading;
-        /*var speedo = document.querySelector('.win-h1');
-        var compass = document.querySelector('.win-h2');
-        WinJS.Binding.processAll(speedo, data);
-        WinJS.Binding.processAll(compass, data);
-        var bindingData = WinJS.Binding.as(data);*/
         //saveLocation(data.latitude, data.longitude);
         //distance = calculateDistance();
     }
