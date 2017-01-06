@@ -1,0 +1,8 @@
+.row {
+    display: flex;
+    align-items: center;
+}
+
+.row > div {
+    flex: 1;
+}
