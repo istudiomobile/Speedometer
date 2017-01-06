@@ -13,7 +13,12 @@
         }
     }
     
-    var app = new Vue();
+    var vm = new Vue({
+            el: '#speedo',
+            data: {
+                speed: 220
+            }
+        });
     if (navigator.geolocation) {
         navigator.geolocation.watchPosition(geoSuccess, geoFailure,
             {
@@ -31,17 +36,12 @@
         var dataHeading = parseFloat(position.coords.heading).toFixed(1);
         if (isNaN(dataSpeed) || isNaN(dataHeading)) dataSpeed = 0, dataHeading = 0;
         data = {longitude: position.coords.longitude, latitude: position.coords.latitude, speed: dataSpeed, heading: dataHeading};
+        vm.speed = data.speed
         /*var speedo = document.querySelector('.win-h1');
         var compass = document.querySelector('.win-h2');
         WinJS.Binding.processAll(speedo, data);
         WinJS.Binding.processAll(compass, data);
         var bindingData = WinJS.Binding.as(data);*/
-        app({
-            el: '#speedo',
-            data: {
-                speed: data.speed
-            }
-        });
         //saveLocation(data.latitude, data.longitude);
         //distance = calculateDistance();
     }
