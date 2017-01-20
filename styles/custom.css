@@ -4,7 +4,7 @@
 }
 
 #compass {
-    margin-top: -300px;
+    position: absolute;
+    top: 700px;
     margin: 0 auto;
-    display: block;
 }
