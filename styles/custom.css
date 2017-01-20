@@ -2,3 +2,7 @@
     margin: 0 auto;
     display: block;
 }
+
+#compass {
+    margin-top: -100px;
+}
