@@ -1,8 +1,4 @@
-.row {
-    display: flex;
-    align-items: center;
-}
-
-.row > div {
-    flex: 1;
+#speedo {
+    margin: 0 auto;
+    display: block;
 }
